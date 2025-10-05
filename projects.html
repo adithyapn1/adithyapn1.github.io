@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Projects — Adithya Pradeep Nair</title>
+<style>
+  :root{--bg:#0f0f12;--fg:#eaeaea;--muted:#a0a0a0;--link:#caa6ff;--card:#17171f;--border:#2a2a35;--max:980px}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  a{color:var(--link);text-decoration:none}
+  .container{max-width:var(--max);margin:0 auto;padding:24px}
+  .top{display:flex;gap:18px;justify-content:center;align-items:center;margin:6px 0 8px}
+  .sep{height:1px;background:var(--border);margin:4px 0 18px}
+  h1{font-size:36px;margin:6px 0 2px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin:14px 0}
+  .meta{font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="top">
+    <a href="index.html">About</a>
+    <a href="publications.html">Publications</a>
+    <a href="projects.html"><b>Projects</b></a>
+    <button class="toggle" id="mode">☾/☀</button>
+  </div>
+  <div class="sep"></div>
+
+  <h1>Projects</h1>
+
+  <div class="card">
+    <b>Musical Box Lab</b> — MCU firmware in C (PWM audio), photodiode tempo control, op-amp audio chain, safe bring-up & debugging.  
+    <span class="meta"><a href="#">code</a> · <a href="#">notes</a></span>
+  </div>
+
+  <div class="card">
+    <b>Lattice Boltzmann Demos</b> — soft-matter flows with boundaries; visual tools for Q-tensor/LdG director fields.  
+    <span class="meta"><a href="#">repo</a></span>
+  </div>
+
+  <div class="card">
+    <b>Speckle-assisted Sub-Rayleigh Imaging</b> — coherence control + DHM; reconstruction pipeline and theory notes.  
+    <span class="meta"><a href="#">preprint</a> · <a href="#">code</a></span>
+  </div>
+
+</div>
+<script>
+  const root=document.documentElement, btn=document.getElementById('mode');
+  const saved=localStorage.getItem('mode')||'dark';
+  if(saved==='dark') root.classList.add('dark'); else root.classList.remove('dark');
+  btn.onclick=()=>{const d=root.classList.toggle('dark');localStorage.setItem('mode',d?'dark':'light');};
+</script>
+</body>
+</html>
