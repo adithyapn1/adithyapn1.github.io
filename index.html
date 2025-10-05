@@ -1,143 +1,155 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Adithya Pradeep Nair</title>
-  <style>
-    :root{
-      --fg:#eaeaea;           /* text color */
-      --muted:#b8b8b8;
-      --link:#caa6ff;
-      --card:rgba(255,255,255,.06);
-      --max:980px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      /* Background: dark blue gradient */
-      background:linear-gradient(180deg,#0d1117 0%, #0b1a34 100%);
-      color:var(--fg);
-    }
-    a{color:var(--link);text-decoration:none}
-    .container{max-width:var(--max);margin:0 auto;padding:24px}
-    header{display:flex;justify-content:flex-end;align-items:center;margin-bottom:24px}
-    nav a{margin-left:16px}
-    .grid{display:grid;grid-template-columns:1fr 260px;gap:28px}
-    .card{background:var(--card);border-radius:10px;padding:14px}
-    .avatar{width:100%;border-radius:8px;display:block;margin-bottom:10px;object-fit:cover;aspect-ratio:1/1}
-    h1{font-size:34px;line-height:1.2;margin:0 0 6px}
-    h2{font-size:22px;margin:28px 0 10px}
-    .motto{margin:2px 0 10px;color:var(--muted)}
-    .note{font-style:italic;color:var(--muted)}
-    .small{font-size:14px;color:var(--muted)}
-    .timeline{display:grid;grid-template-columns:70px 1fr;gap:14px;align-items:start}
-    .pubs{display:grid;gap:12px}
-    .pub{display:grid;grid-template-columns:120px 1fr;gap:12px;background:var(--card);border-radius:10px;padding:10px}
-    .thumb{width:120px;height:76px;background:rgba(255,255,255,.1);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--muted)}
-    ul{margin:10px 0 0 20px}
-    .footer{margin:28px 0 10px;text-align:center;color:var(--muted);font-size:14px}
-    /* Mobile */
-    @media(max-width:820px){
-      .grid{grid-template-columns:1fr}
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Adithya Pradeep Nair</title>
+<style>
+  :root{
+    --bg:#ffffff; --fg:#141414; --muted:#6b6b6b; --link:#a200ff; --card:#f6f6f6; --border:#eaeaea;
+    --max:980px; --colR:300px;
+  }
+  :root.dark{
+    --bg:#0f0f12; --fg:#eaeaea; --muted:#a0a0a0; --link:#caa6ff; --card:#17171f; --border:#2a2a35;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+       font:16px/1.65 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  a{color:var(--link);text-decoration:none}
+  .container{max-width:var(--max);margin:0 auto;padding:24px}
+
+  /* top nav */
+  .top{display:flex;gap:18px;justify-content:center;align-items:center;margin:6px 0 8px}
+  .top a{font-size:15px}
+  .toggle{border:1px solid var(--border);border-radius:999px;padding:3px 10px;cursor:pointer;font-size:14px;color:var(--muted)}
+  .sep{height:1px;background:var(--border);margin:4px 0 18px}
+
+  /* layout */
+  .grid{display:grid;grid-template-columns:1fr var(--colR);gap:28px}
+  .sidebar .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px}
+  .avatar{width:100%;border-radius:10px;display:block;margin-bottom:10px;object-fit:cover;aspect-ratio:1/1}
+  h1{font-size:36px;line-height:1.2;margin:0 0 6px}
+  h1 b{font-weight:800}
+  h2{font-size:22px;margin:26px 0 10px}
+  .note{font-style:italic;color:var(--muted);margin:6px 0 14px}
+  .motto{color:var(--muted);margin:2px 0 10px}
+  .small{font-size:14px;color:var(--muted)}
+  .timeline{display:grid;grid-template-columns:70px 1fr;gap:14px;align-items:start}
+  .pub{display:grid;grid-template-columns:130px 1fr;gap:12px;background:var(--card);
+       border:1px solid var(--border);border-radius:12px;padding:10px;margin-bottom:12px}
+  .thumb{width:130px;height:82px;background:var(--border);border-radius:8px;
+         display:flex;align-items:center;justify-content:center;color:var(--muted)}
+  ul{margin:10px 0 0 20px}
+  footer{margin:36px 0 10px;text-align:center;color:var(--muted);font-size:14px}
+
+  @media (max-width:860px){
+    .grid{grid-template-columns:1fr}
+    .top{justify-content:flex-start}
+  }
+</style>
 </head>
 <body>
-  <div class="container">
+<div class="container">
 
-    <!-- Top navigation -->
-    <header>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#updates">Updates</a>
-        <a href="#publications">Publications</a>
-        <a href="#projects">Projects</a>
-      </nav>
-    </header>
-
-    <div class="grid">
-      <!-- Main column -->
-      <main>
-        <section id="about">
-          <h1>Adithya Pradeep Nair</h1>
-          <p class="motto">Motto - to build cool stuff.</p>
-          <p class="note">This webpage is under active construction.</p>
-
-          <p>
-            I am a researcher working at the intersection of <b>photonics</b>, <b>soft matter</b>, and <b>quantum</b>.
-            I study liquid-crystal topological textures (torons, skyrmions), speckle and sub-Rayleigh imaging,
-            and electrically driven transport in reconfigurable LC devices.
-          </p>
-          <p>
-            Previously: University of Oxford (Soft Matter Photonics), projects on hybrid 1PP+2PP polymer networks,
-            digital holographic microscopy with speckle theory, and toron racetrack prototypes.
-          </p>
-        </section>
-
-        <section id="updates">
-          <h2>Updates</h2>
-          <div class="timeline">
-            <div class="small">Apr<br>2025</div>
-            <div>Submitted manuscript on <i>electrical steering of torons for racetrack transport</i>.
-              <span class="small"> <a href="#">preprint</a> · <a href="#">code</a></span>
-            </div>
-
-            <div class="small">Jan<br>2025</div>
-            <div>Talk on <i>speckle-assisted sub-Rayleigh imaging</i> at Group meeting.</div>
-          </div>
-        </section>
-
-        <section id="publications">
-          <h2>Selected Publications</h2>
-          <div class="pubs">
-            <article class="pub">
-              <div class="thumb">fig</div>
-              <div>
-                <b>Electrically Driven Toron Transport for Reconfigurable Soft-Matter Logic</b><br>
-                <span class="small">A. P. Nair, et al., 2025 (in review)</span><br>
-                <span class="small"><a href="#">abs</a>  <a href="#">pdf</a>  <a href="#">bib</a></span>
-              </div>
-            </article>
-
-            <article class="pub">
-              <div class="thumb">fig</div>
-              <div>
-                <b>Speckle and Sub-Rayleigh Imaging with Coherence Engineering</b><br>
-                <span class="small">A. P. Nair, et al., 2024 (preprint)</span><br>
-                <span class="small"><a href="#">link</a></span>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section id="projects">
-          <h2>Projects</h2>
-          <ul>
-            <li>Musical box lab: MCU C firmware, PWM audio, photodiode control, op-amp chain.</li>
-            <li>Lattice Boltzmann demos for soft-matter flows; Q-tensor/LdG visualization tools.</li>
-          </ul>
-        </section>
-      </main>
-
-      <!-- Right sidebar -->
-      <aside>
-        <div class="card">
-          <img class="avatar" src="assets/me.jpg" alt="Adithya portrait" />
-          <div class="small">
-            Oxford • London<br>
-            <a href="mailto:you@example.com">you@example.com</a><br>
-            <a href="https://scholar.google.com/">Google Scholar</a><br>
-            <a href="https://github.com/adithyapn1">GitHub</a><br>
-            <a href="https://www.linkedin.com/">LinkedIn</a><br>
-            <a href="/cv.pdf">CV (PDF)</a>
-          </div>
-        </div>
-      </aside>
-    </div>
-
-    <div class="footer">© 2025 Adithya Pradeep Nair</div>
+  <!-- top nav -->
+  <div class="top">
+    <a href="#about">About</a>
+    <a href="#publications">Publications</a>
+    <a href="#projects">Projects</a>
+    <button class="toggle" id="mode">☾</button>
   </div>
+  <div class="sep"></div>
+
+  <div class="grid">
+    <!-- main column -->
+    <main>
+      <section id="about">
+        <h1><b>Adithya</b> Pradeep Nair</h1>
+        <p class="motto">Motto – to build cool stuff.</p>
+        <p class="note">This webpage is under active construction.</p>
+
+        <p>
+          I completed/continue my DPhil research at the University of Oxford (Soft Matter Photonics),
+          working at the intersection of <b>photonics</b>, <b>soft matter</b>, and <b>quantum</b>.
+          I study liquid-crystal topological textures (torons, skyrmions), coherence engineering for
+          <b>speckle and sub-Rayleigh imaging</b>, and electrically driven transport in reconfigurable LC devices.
+        </p>
+        <p>
+          Interests: Q-tensor/Landau–de Gennes modeling; BPM/simple FDTD; Lattice Boltzmann flows;
+          DHM/phase retrieval; polarization optics; microcontroller control of experiments.
+        </p>
+      </section>
+
+      <section id="updates">
+        <h2>Updates</h2>
+        <div class="timeline">
+          <div class="small">Apr<br>2025</div>
+          <div>Submitted manuscript on <i>electrical steering of torons for racetrack transport</i>.
+            <span class="small"> <a href="#">preprint</a> · <a href="#">code</a></span>
+          </div>
+
+          <div class="small">Jan<br>2025</div>
+          <div>Talk on <i>speckle-assisted sub-Rayleigh imaging</i> at group meeting.</div>
+        </div>
+      </section>
+
+      <section id="publications">
+        <h2>Selected Publications</h2>
+
+        <article class="pub">
+          <div class="thumb">fig</div>
+          <div>
+            <b>Electrically Driven Toron Transport for Reconfigurable Soft-Matter Logic</b><br>
+            <span class="small">A. P. Nair, et al., 2025 (in review)</span><br>
+            <span class="small"><a href="#">abs</a> · <a href="#">pdf</a> · <a href="#">bib</a></span>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="thumb">fig</div>
+          <div>
+            <b>Speckle and Sub-Rayleigh Imaging with Coherence Engineering</b><br>
+            <span class="small">A. P. Nair, et al., 2024 (preprint)</span><br>
+            <span class="small"><a href="#">link</a></span>
+          </div>
+        </article>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        <ul>
+          <li>Musical box lab (MCU C firmware, PWM audio, photodiode control, op-amp chain).</li>
+          <li>LBM demos for soft-matter flows; Q-tensor/LdG visualization tools.</li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- right sidebar -->
+    <aside class="sidebar">
+      <div class="card">
+        <img class="avatar" src="assets/profile.jpg" alt="Adithya portrait">
+        <div class="small">
+          Oxford • London<br>
+          <a href="mailto:you@example.com">you@example.com</a><br>
+          <a href="https://scholar.google.com/">Google Scholar</a><br>
+          <a href="https://github.com/adithyapn1">GitHub</a><br>
+          <a href="https://www.linkedin.com/">LinkedIn</a><br>
+          <a href="/cv.pdf">CV (PDF)</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>© 2025 Adithya Pradeep Nair</footer>
+</div>
+
+<script>
+  // simple dark-mode toggle (persists in localStorage)
+  const root=document.documentElement, btn=document.getElementById('mode');
+  const saved=localStorage.getItem('mode');
+  if(saved==='dark'){ root.classList.add('dark'); btn.textContent='☀'; }
+  btn.onclick=()=>{ const d=root.classList.toggle('dark'); btn.textContent=d?'☀':'☾'; localStorage.setItem('mode', d?'dark':'light'); };
+</script>
 </body>
 </html>
