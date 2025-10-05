@@ -1,159 +1,173 @@
 <!doctype html>
 <html lang="en" class="dark">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Publications — Adithya Pradeep</title>
-<style>
-  :root{
-    --bg:#0f0f12; --fg:#eaeaea; --muted:#a0a0a0; --link:#caa6ff;
-    --card:#17171f; --border:#2a2a35; --chip:#23232e; --max:980px;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--fg);
-       font:16px/1.65 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-  a{color:var(--link);text-decoration:none}
-  .container{max-width:var(--max);margin:0 auto;padding:24px}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Publications — Adithya Pradeep Nair</title>
+  <style>
+    :root{
+      --bg:#0f0f12; --fg:#eaeaea; --muted:#a0a0a0; --link:#caa6ff;
+      --card:#17171f; --border:#2a2a35; --chip:#23232e; --max:980px;
+    }
+    *{ box-sizing:border-box }
+    body{
+      margin:0; background:var(--bg); color:var(--fg);
+      font:16px/1.65 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+    a{ color:var(--link); text-decoration:none }
+    .container{ max-width:var(--max); margin:0 auto; padding:24px }
 
-  /* top nav (same as index) */
-  .top{display:flex;gap:18px;justify-content:center;align-items:center;margin:6px 0 8px}
-  .toggle{border:1px solid var(--border);border-radius:999px;padding:3px 10px;cursor:pointer;font-size:14px;color:var(--muted)}
-  .sep{height:1px;background:var(--border);margin:4px 0 18px}
+    /* top nav (same as index) */
+    .top{ display:flex; gap:18px; justify-content:center; align-items:center; margin:6px 0 8px }
+    .toggle{ border:1px solid var(--border); border-radius:999px; padding:3px 10px; cursor:pointer; font-size:14px; color:var(--muted) }
+    .sep{ height:1px; background:var(--border); margin:4px 0 18px }
 
-  h1{font-size:36px;margin:6px 0 2px}
-  .lead{color:var(--muted);margin:0 0 22px}
+    h1{ font-size:36px; margin:6px 0 2px }
+    .lead{ color:var(--muted); margin:0 0 22px }
 
-  /* pub list */
-  .pub{display:grid;grid-template-columns:130px 1fr 70px;gap:14px;
-       align-items:center;background:var(--card);border:1px solid var(--border);
-       border-radius:12px;padding:12px;margin:16px 0}
-  .thumb{width:130px;height:82px;border-radius:8px;object-fit:cover;background:#222;
-         display:flex;align-items:center;justify-content:center;color:#888}
-  .title{font-weight:700}
-  .meta{font-size:14px;color:var(--muted)}
-  .chips{margin-top:6px}
-  .chip{display:inline-block;background:var(--chip);border:1px solid var(--border);
-        padding:4px 10px;border-radius:999px;font-size:12px;margin:0 8px 0 0}
-  .year{color:#8a8a96;font-size:28px;opacity:.5;justify-self:end}
-  .back{margin-top:10px;color:var(--muted);display:inline-block}
+    /* publication cards */
+    .pub{
+      display:grid;
+      grid-template-columns:130px 1fr 70px;
+      gap:14px; align-items:center;
+      background:var(--card); border:1px solid var(--border);
+      border-radius:12px; padding:12px; margin:16px 0;
+    }
+    .thumb{
+      width:130px; height:82px; border-radius:8px; object-fit:cover;
+      background:#222; display:flex; align-items:center; justify-content:center; color:#888;
+    }
+    .title{ font-weight:700 }
+    .meta{ font-size:14px; color:var(--muted) }
+    .chips{ margin-top:6px }
+    .chip{
+      display:inline-block; background:var(--chip); border:1px solid var(--border);
+      padding:4px 10px; border-radius:999px; font-size:12px; margin-right:8px;
+    }
+    .year{ color:#8a8a96; font-size:28px; opacity:.5; justify-self:end }
+    .back{ margin-top:10px; color:var(--muted); display:inline-block }
 
-  @media (max-width:820px){
-    .pub{grid-template-columns:110px 1fr}
-    .year{display:none}
-    .thumb{width:110px;height:70px}
-  }
-</style>
+    @media (max-width:820px){
+      .pub{ grid-template-columns:110px 1fr }
+      .year{ display:none }
+      .thumb{ width:110px; height:70px }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
+  <div class="container">
 
-  <!-- top nav -->
-  <div class="top">
-    <a href="index.html">About</a>
-    <a href="publications.html"><b>Publications</b></a>
-    <a href="projects.html">Projects</a>
-    <button class="toggle" id="mode">☾/☀</button>
-  </div>
-  <div class="sep"></div>
-
-  <h1>Publications</h1>
-  <p class="lead">
-    Reverse-chronological selection. Full list on
-    <a href="https://scholar.google.com/citations?user=7aQmxwcAAAAJ" target="_blank" rel="noopener">Google Scholar</a>.
-  </p>
-
-  <div id="pub-list"></div>
-
-  <a class="back" href="index.html">← Back to About</a>
-
-</div>
-
-<script>
-/* ---- edit your publications here (one object per paper) ---- */
-const pubs = [
-  {
-    title: "Advanced Image-Integrated Smart Windows using Printed Electrochromic Polymer-Dispersed Liquid Crystal Droplets",
-    authors: "Jun-Seok Ma, Waqas Kamal, Adithya Pradeep, Alva J. Orr, Seung-Won Oh, Jin-Young Choi, Jinge Guo, Bradley Mee, Hyun-Woo Oh, Jae-Hwan Lee, Alfonso A. Castrejon-Pita, Steve J. Elston, Wook-Sung Kim, Stephen M. Morris",
-    venue: "Advanced Optical Materials",
-    year: 2025,
-    thumb: "/assets/AOMpaper.jpeg",   // your uploaded image
-    links: {
-      abs:   "",                      // e.g., arXiv abstract
-      pdf:   "",                      // preprint or publisher PDF
-      doi:   "",                      // e.g., https://doi.org/xxxx
-      html:  "",                      // publisher landing page
-      code:  "",                      // GitHub repo if any
-      bib:   "",                      // e.g., /assets/bib/aom2025.bib
-      scholar: "https://scholar.google.com/citations?user=7aQmxwcAAAAJ"
-    }
-  },
-  {
-    title: "Operating Temperature Regulation in Push-Pull Azobenzene-Doped Liquid Crystal Light-Driven Devices using UV Absorber",
-    authors: "Jun-Seok Ma, Adithya Pradeep, Seung-Won Oh, Jae-Hwan Lee, Jin-Young Choi, Si-On Cha, Hyun-Woo Oh, Wook-Sung Kim",
-    venue: "Dyes and Pigments",
-    year: 2025,
-    thumb: "/assets/Dyespaper.jpeg",
-    links: {
-      abs:   "",
-      pdf:   "",
-      doi:   "",
-      html:  "",
-      code:  "",
-      bib:   "",
-      scholar: "https://scholar.google.com/citations?user=7aQmxwcAAAAJ"
-    }
-  },
-  {
-    title: "Locking Metastable Topological Domains in Nematic Liquid Crystal Pi Cells",
-    authors: "Adithya Pradeep, Urban Mur, Jun-Seok Ma, Nathan Spiller, Yihan Jin, Waqas Kamal, Steve J. Elston, Stephen M. Morris",
-    venue: "Advanced Functional Materials",
-    year: 2025,
-    thumb: "/assets/AFMpaper.jpeg",
-    links: {
-      abs:   "",
-      pdf:   "",
-      doi:   "",
-      html:  "",
-      code:  "",
-      bib:   "",
-      scholar: "https://scholar.google.com/citations?user=7aQmxwcAAAAJ"
-    }
-  }
-];  // <-- end of pubs array
-</script>
-
-
-/* ---- renderer (no edits needed below) ---- */
-const L = {
-  ABS:'abs', BIB:'bib', PDF:'pdf', HTML:'html', DOI:'doi', CODE:'code', SCHOLAR:'scholar'
-};
-function chip(label, url){ return url ? `<a class="chip" href="${url}" target="_blank" rel="noopener">${label.toUpperCase()}</a>` : ""; }
-function thumbEl(src){ return src ? `<img class="thumb" src="${src}" alt="">` : `<div class="thumb">fig</div>`; }
-function pubCard(p){
-  const buttons = [
-    chip(L.ABS, p.links.abs), chip(L.BIB, p.links.bib), chip(L.PDF, p.links.pdf),
-    chip(L.HTML, p.links.html), chip(L.DOI, p.links.doi), chip(L.CODE, p.links.code),
-    chip(L.SCHOLAR, p.links.scholar)
-  ].join("");
-  return `
-  <article class="pub">
-    ${thumbEl(p.thumb)}
-    <div>
-      <div class="title">${p.title}</div>
-      <div class="meta">${p.authors} · ${p.venue}</div>
-      <div class="chips">${buttons}</div>
+    <!-- top nav -->
+    <div class="top">
+      <a href="index.html">About</a>
+      <a href="publications.html"><b>Publications</b></a>
+      <a href="projects.html">Projects</a>
+      <button class="toggle" id="mode">☾/☀</button>
     </div>
-    <div class="year">${p.year}</div>
-  </article>`;
-}
-document.getElementById("pub-list").innerHTML =
-  pubs.sort((a,b)=>b.year-a.year).map(pubCard).join("");
+    <div class="sep"></div>
 
-// dark-mode toggle (default dark)
-const root=document.documentElement, btn=document.getElementById('mode');
-const saved=localStorage.getItem('mode')||'dark';
-if(saved==='dark') root.classList.add('dark'); else root.classList.remove('dark');
-btn.onclick=()=>{const d=root.classList.toggle('dark');localStorage.setItem('mode',d?'dark':'light');};
-</script>
+    <h1>Publications</h1>
+    <p class="lead">
+      Reverse-chronological selection. Full list on
+      <a href="https://scholar.google.com/citations?user=7aQmxwcAAAAJ" target="_blank" rel="noopener">Google Scholar</a>.
+    </p>
+
+    <div id="pub-list"></div>
+
+    <a class="back" href="index.html">← Back to About</a>
+  </div>
+
+  <script>
+    /* ---------- Your publications (one object per paper) ---------- */
+    const pubs = [
+      {
+        title: "Advanced Image-Integrated Smart Windows using Printed Electrochromic Polymer-Dispersed Liquid Crystal Droplets",
+        authors: "Jun-Seok Ma, Waqas Kamal, Adithya Pradeep, Alva J. Orr, Seung-Won Oh, Jin-Young Choi, Jinge Guo, Bradley Mee, Hyun-Woo Oh, Jae-Hwan Lee, Alfonso A. Castrejon-Pita, Steve J. Elston, Wook-Sung Kim, Stephen M. Morris",
+        venue: "Advanced Optical Materials",
+        year: 2025,
+        thumb: "/assets/AOMpaper.jpeg",
+        links: {
+          abs:   "",
+          pdf:   "",
+          doi:   "",
+          html:  "",
+          code:  "",
+          bib:   "",
+          scholar: "https://scholar.google.com/citations?user=7aQmxwcAAAAJ"
+        }
+      },
+      {
+        title: "Operating Temperature Regulation in Push-Pull Azobenzene-Doped Liquid Crystal Light-Driven Devices using UV Absorber",
+        authors: "Jun-Seok Ma, Adithya Pradeep, Seung-Won Oh, Jae-Hwan Lee, Jin-Young Choi, Si-On Cha, Hyun-Woo Oh, Wook-Sung Kim",
+        venue: "Dyes and Pigments",
+        year: 2025,
+        thumb: "/assets/Dyespaper.jpeg",
+        links: {
+          abs:   "",
+          pdf:   "",
+          doi:   "",
+          html:  "",
+          code:  "",
+          bib:   "",
+          scholar: "https://scholar.google.com/citations?user=7aQmxwcAAAAJ"
+        }
+      },
+      {
+        title: "Locking Metastable Topological Domains in Nematic Liquid Crystal Pi Cells",
+        authors: "Adithya Pradeep, Urban Mur, Jun-Seok Ma, Nathan Spiller, Yihan Jin, Waqas Kamal, Steve J. Elston, Stephen M. Morris",
+        venue: "Advanced Functional Materials",
+        year: 2025,
+        thumb: "/assets/AFMpaper.jpeg",
+        links: {
+          abs:   "",
+          pdf:   "",
+          doi:   "",
+          html:  "",
+          code:  "",
+          bib:   "",
+          scholar: "https://scholar.google.com/citations?user=7aQmxwcAAAAJ"
+        }
+      }
+    ];
+
+    /* ---------- Renderer (do not edit) ---------- */
+    const L = { ABS:'abs', BIB:'bib', PDF:'pdf', HTML:'html', DOI:'doi', CODE:'code', SCHOLAR:'scholar' };
+    const chip   = (label, url) => url ? `<a class="chip" href="${url}" target="_blank" rel="noopener">${label}</a>` : "";
+    const thumbEl = (src) => src ? `<img class="thumb" src="${src}" alt="">` : `<div class="thumb">fig</div>`;
+    function pubCard(p){
+      const buttons = [
+        chip("ABS", p.links.abs),
+        chip("BIB", p.links.bib),
+        chip("PDF", p.links.pdf),
+        chip("HTML", p.links.html),
+        chip("DOI", p.links.doi),
+        chip("CODE", p.links.code),
+        chip("SCHOLAR", p.links.scholar)
+      ].join("");
+      return `
+        <article class="pub">
+          ${thumbEl(p.thumb)}
+          <div>
+            <div class="title">${p.title}</div>
+            <div class="meta">${p.authors} · ${p.venue}</div>
+            <div class="chips">${buttons}</div>
+          </div>
+          <div class="year">${p.year}</div>
+        </article>
+      `;
+    }
+    document.getElementById("pub-list").innerHTML =
+      pubs.sort((a,b)=>b.year-a.year).map(pubCard).join("");
+
+    /* ---------- Dark-mode toggle (default dark) ---------- */
+    const root = document.documentElement;
+    const btn  = document.getElementById('mode');
+    const saved = localStorage.getItem('mode') || 'dark';
+    if (saved === 'dark') root.classList.add('dark'); else root.classList.remove('dark');
+    btn.onclick = () => {
+      const d = root.classList.toggle('dark');
+      localStorage.setItem('mode', d ? 'dark' : 'light');
+    };
+  </script>
 </body>
 </html>
