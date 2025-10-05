@@ -1,16 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Adithya Pradeep</title>
+<title>Adithya Pradeep Nair</title>
 <style>
+  /* ---- theme variables (light + dark) ---- */
   :root{
-    --bg:#ffffff; --fg:#141414; --muted:#6b6b6b; --link:#a200ff; --card:#f6f6f6; --border:#eaeaea;
-    --max:980px; --colR:300px;
+    --bg:#ffffff; --fg:#141414; --muted:#6b6b6b; --link:#a200ff;
+    --card:#f6f6f6; --border:#eaeaea; --max:980px; --colR:300px;
   }
   :root.dark{
-    --bg:#0f0f12; --fg:#eaeaea; --muted:#a0a0a0; --link:#caa6ff; --card:#17171f; --border:#2a2a35;
+    --bg:#0f0f12; --fg:#eaeaea; --muted:#a0a0a0; --link:#caa6ff;
+    --card:#17171f; --border:#2a2a35;
   }
 
   *{box-sizing:border-box}
@@ -57,7 +59,7 @@
     <a href="#about">About</a>
     <a href="#publications">Publications</a>
     <a href="#projects">Projects</a>
-    <button class="toggle" id="mode">☾</button>
+    <button class="toggle" id="mode">☾/☀</button>
   </div>
   <div class="sep"></div>
 
@@ -70,14 +72,13 @@
         <p class="note">This webpage is under active construction.</p>
 
         <p>
-          I completed/continue my DPhil research at the University of Oxford (Soft Matter Photonics),
-          working at the intersection of <b>photonics</b>, <b>soft matter</b>, and <b>quantum</b>.
+          I work at the intersection of <b>photonics</b>, <b>soft matter</b>, and <b>quantum</b>.
           I study liquid-crystal topological textures (torons, skyrmions), coherence engineering for
-          <b>speckle and sub-Rayleigh imaging</b>, and electrically driven transport in reconfigurable LC devices.
+          <b>speckle & sub-Rayleigh imaging</b>, and electrically driven transport in reconfigurable LC devices.
         </p>
         <p>
-          Interests: Q-tensor/Landau–de Gennes modeling; BPM/simple FDTD; Lattice Boltzmann flows;
-          DHM/phase retrieval; polarization optics; microcontroller control of experiments.
+          Previously: University of Oxford (Soft Matter Photonics); projects on hybrid 1PP+2PP polymer networks,
+          DHM/phase retrieval, and toron racetrack prototypes.
         </p>
       </section>
 
@@ -119,8 +120,8 @@
       <section id="projects">
         <h2>Projects</h2>
         <ul>
-          <li>Musical box lab (MCU C firmware, PWM audio, photodiode control, op-amp chain).</li>
-          <li>LBM demos for soft-matter flows; Q-tensor/LdG visualization tools.</li>
+          <li>Musical box lab: MCU C firmware, PWM audio, photodiode control, op-amp chain.</li>
+          <li>Lattice Boltzmann demos for soft-matter flows; Q-tensor/LdG visualization tools.</li>
         </ul>
       </section>
     </main>
@@ -128,7 +129,9 @@
     <!-- right sidebar -->
     <aside class="sidebar">
       <div class="card">
-        <img class="avatar" src="assets/profile.jpg" alt="Adithya portrait">
+        <img class="avatar"
+             src="assets/WhatsApp%20Image%202025-10-05%20at%2016.56.34.jpeg"
+             alt="Adithya portrait">
         <div class="small">
           Oxford • London<br>
           <a href="mailto:you@example.com">you@example.com</a><br>
@@ -145,11 +148,17 @@
 </div>
 
 <script>
-  // simple dark-mode toggle (persists in localStorage)
-  const root=document.documentElement, btn=document.getElementById('mode');
-  const saved=localStorage.getItem('mode');
-  if(saved==='dark'){ root.classList.add('dark'); btn.textContent='☀'; }
-  btn.onclick=()=>{ const d=root.classList.toggle('dark'); btn.textContent=d?'☀':'☾'; localStorage.setItem('mode', d?'dark':'light'); };
+  // Dark mode toggle (defaults to dark)
+  const root = document.documentElement;
+  const btn  = document.getElementById('mode');
+  const saved = localStorage.getItem('mode') || 'dark';
+  if (saved === 'dark') { root.classList.add('dark'); }
+  else { root.classList.remove('dark'); }
+
+  btn.onclick = () => {
+    const dark = root.classList.toggle('dark');
+    localStorage.setItem('mode', dark ? 'dark' : 'light');
+  };
 </script>
 </body>
 </html>
