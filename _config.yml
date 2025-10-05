@@ -1,4 +1,8 @@
 title: Adithya Pradeep Nair
 description: Photonics • Soft matter • Quantum
 theme: minima            # any Pages-supported theme
-
+title: Adithya Pradeep Nair
+description: Research + projects
+remote_theme: pages-themes/cayman@v0.2.0   # owner/repo@tag
+plugins:
+  - jekyll-remote-theme
