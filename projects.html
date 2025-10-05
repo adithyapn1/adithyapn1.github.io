@@ -1,56 +1,179 @@
 <!doctype html>
 <html lang="en" class="dark">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Projects — Adithya Pradeep Nair</title>
-<style>
-  :root{--bg:#0f0f12;--fg:#eaeaea;--muted:#a0a0a0;--link:#caa6ff;--card:#17171f;--border:#2a2a35;--max:980px}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-  a{color:var(--link);text-decoration:none}
-  .container{max-width:var(--max);margin:0 auto;padding:24px}
-  .top{display:flex;gap:18px;justify-content:center;align-items:center;margin:6px 0 8px}
-  .sep{height:1px;background:var(--border);margin:4px 0 18px}
-  h1{font-size:36px;margin:6px 0 2px}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin:14px 0}
-  .meta{font-size:14px;color:var(--muted)}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects — Adithya Pradeep Nair</title>
+  <style>
+    :root{
+      --bg:#0f0f12; --fg:#eaeaea; --muted:#a0a0a0; --link:#caa6ff;
+      --card:#17171f; --border:#2a2a35; --chip:#23232e; --max:1180px;
+      --shadow: 0 8px 26px rgba(0,0,0,.35);
+    }
+    *{ box-sizing:border-box }
+    body{
+      margin:0; background:var(--bg); color:var(--fg);
+      font:16px/1.65 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+    a{ color:var(--link); text-decoration:none }
+
+    .container{ max-width:var(--max); margin:0 auto; padding:24px }
+    /* top nav */
+    .top{ display:flex; gap:18px; justify-content:center; align-items:center; margin:6px 0 8px }
+    .toggle{ border:1px solid var(--border); border-radius:999px; padding:3px 10px; cursor:pointer; font-size:14px; color:var(--muted) }
+    .sep{ height:1px; background:var(--border); margin:4px 0 18px }
+
+    h1{ font-size:36px; margin:6px 0 2px }
+    .lead{ color:var(--muted); margin:0 0 22px }
+
+    /* Masonry layout using CSS columns for variable heights */
+    .masonry{
+      column-count:3;
+      column-gap:16px;
+    }
+    @media (max-width:1100px){ .masonry{ column-count:2 } }
+    @media (max-width:700px){  .masonry{ column-count:1 } }
+
+    .card{
+      display:block;
+      break-inside: avoid;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:14px;
+      margin:0 0 16px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .cover{
+      width:100%;
+      aspect-ratio: 16 / 9;   /* consistent banner crop */
+      object-fit:cover;
+      display:block;
+      background:#222;
+    }
+    .content{ padding:14px 14px 12px }
+    .title{
+      font-size:22px; font-weight:800; line-height:1.15; margin:4px 0 6px;
+    }
+    .subtitle{ color:var(--muted); font-size:14px; margin:2px 0 10px }
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px }
+    .chip{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 10px; border-radius:999px;
+      background:var(--chip); border:1px solid var(--border); font-size:12px;
+    }
+    .chip svg{ width:14px; height:14px; opacity:.9 }
+  </style>
 </head>
 <body>
-<div class="container">
+  <div class="container">
 
-  <div class="top">
-    <a href="index.html">About</a>
-    <a href="publications.html">Publications</a>
-    <a href="projects.html"><b>Projects</b></a>
-    <button class="toggle" id="mode">☾/☀</button>
-  </div>
-  <div class="sep"></div>
+    <!-- top nav -->
+    <div class="top">
+      <a href="index.html">About</a>
+      <a href="publications.html">Publications</a>
+      <a href="projects.html"><b>Projects</b></a>
+      <button class="toggle" id="mode">☾/☀</button>
+    </div>
+    <div class="sep"></div>
 
-  <h1>Projects</h1>
+    <h1>Projects</h1>
+    <p class="lead">A growing collection of things I tinker with.</p>
 
-  <div class="card">
-    <b>Musical Box Lab</b> — MCU firmware in C (PWM audio), photodiode tempo control, op-amp audio chain, safe bring-up & debugging.  
-    <span class="meta"><a href="#">code</a> · <a href="#">notes</a></span>
-  </div>
-
-  <div class="card">
-    <b>Lattice Boltzmann Demos</b> — soft-matter flows with boundaries; visual tools for Q-tensor/LdG director fields.  
-    <span class="meta"><a href="#">repo</a></span>
+    <div id="grid" class="masonry"></div>
   </div>
 
-  <div class="card">
-    <b>Speckle-assisted Sub-Rayleigh Imaging</b> — coherence control + DHM; reconstruction pipeline and theory notes.  
-    <span class="meta"><a href="#">preprint</a> · <a href="#">code</a></span>
-  </div>
+  <script>
+    /* ----------------- EDIT YOUR PROJECTS HERE ----------------- */
+    const projects = [
+      {
+        title: "musical-box lab",
+        subtitle: "MCU C firmware · PWM audio · photodiode control · op-amp chain",
+        img: "/assets/projects/musicalbox.jpg",      // 16:9 preferred; any size works
+        links: {
+          git:  "",                                   // e.g., https://github.com/...
+          demo: "",                                   // e.g., live page / video
+          paper:""                                    // e.g., arXiv/paper link
+        }
+      },
+      {
+        title: "speckle & sub-Rayleigh imaging toolkit",
+        subtitle: "Coherence engineering + speckle processing utilities for lab demos",
+        img: "/assets/projects/speckle.png",
+        links: {
+          git:  "",
+          demo: "",
+          paper:""
+        }
+      },
+      {
+        title: "lattice Boltzmann demos",
+        subtitle: "Soft-matter flows: Q-tensor/LdG visualization; interactive notebooks",
+        img: "/assets/projects/lbm.png",
+        links: {
+          git:  "",
+          demo: "",
+          paper:""
+        }
+      },
+      {
+        title: "toron racetrack prototypes",
+        subtitle: "Electrically steered topological textures in reconfigurable LC devices",
+        img: "/assets/projects/toron.png",
+        links: { git:"", demo:"", paper:"" }
+      },
+      {
+        title: "DHM speckle phase tools",
+        subtitle: "Quick scripts for phase retrieval & analysis in digital holography",
+        img: "/assets/projects/dhm.png",
+        links: { git:"", demo:"", paper:"" }
+      },
+      {
+        title: "optics lab helper",
+        subtitle: "Small utilities for oscilloscope/FG logging and calibration notes",
+        img: "/assets/projects/labtools.jpg",
+        links: { git:"", demo:"", paper:"" }
+      }
+    ];
+    /* ----------------------------------------------------------- */
 
-</div>
-<script>
-  const root=document.documentElement, btn=document.getElementById('mode');
-  const saved=localStorage.getItem('mode')||'dark';
-  if(saved==='dark') root.classList.add('dark'); else root.classList.remove('dark');
-  btn.onclick=()=>{const d=root.classList.toggle('dark');localStorage.setItem('mode',d?'dark':'light');};
-</script>
+    const iconGit = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.26.79-.58v-2.2c-3.22.7-3.9-1.55-3.9-1.55-.53-1.35-1.3-1.71-1.3-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.77 2.73 1.26 3.4.97.11-.76.41-1.26.75-1.55-2.57-.29-5.27-1.29-5.27-5.74 0-1.27.46-2.31 1.2-3.13-.12-.29-.52-1.47.11-3.06 0 0 .98-.31 3.2 1.19a11.07 11.07 0 0 1 5.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.59.23 2.77.11 3.06.74.82 1.2 1.86 1.2 3.13 0 4.46-2.71 5.44-5.29 5.73.42.36.8 1.06.8 2.14v3.17c0 .32.21.7.8.58A11.5 11.5 0 0 0 12 .5Z"/></svg>`;
+    const iconLink = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.59 13.41a1 1 0 0 0 1.41 0l3.3-3.3a3 3 0 1 0-4.24-4.24l-1.8 1.8a1 1 0 1 0 1.42 1.42l1.8-1.8a1 1 0 1 1 1.41 1.41l-3.3 3.3a1 1 0 0 0 0 1.41ZM6.94 20.94a3 3 0 0 1 0-4.24l3.3-3.3a1 1 0 1 1 1.41 1.42l-3.3 3.3a1 1 0 0 0 1.41 1.41l1.8-1.8a1 1 0 1 1 1.42 1.42l-1.8 1.8a3 3 0 0 1-4.24 0Z"/></svg>`;
+    const iconDoc  = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h7l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm7 1.5V8h4.5L14 3.5ZM8 12.5h8v1.5H8v-1.5Zm0 3h8V17H8v-1.5Zm0-6h5V11H8V9.5Z"/></svg>`;
+
+    function chip(label, url, icon){
+      return url ? `<a class="chip" href="${url}" target="_blank" rel="noopener">${icon} ${label}</a>` : "";
+    }
+    function card(p){
+      const chips = [
+        chip("GitHub", p.links.git, iconGit),
+        chip("Demo",   p.links.demo, iconLink),
+        chip("Paper",  p.links.paper, iconDoc)
+      ].join("");
+
+      const img = p.img
+        ? `<img class="cover" src="${p.img}" alt="">`
+        : `<div class="cover" style="display:flex;align-items:center;justify-content:center;color:#777">no image</div>`;
+
+      return `
+        <article class="card">
+          ${img}
+          <div class="content">
+            <div class="title">${p.title}</div>
+            <div class="subtitle">${p.subtitle||""}</div>
+            <div class="chips">${chips}</div>
+          </div>
+        </article>
+      `;
+    }
+
+    document.getElementById("grid").innerHTML = projects.map(card).join("");
+
+    /* dark mode (default dark) */
+    const root=document.documentElement, btn=document.getElementById('mode');
+    const saved=localStorage.getItem('mode')||'dark';
+    if(saved==='dark') root.classList.add('dark'); else root.classList.remove('dark');
+    btn.onclick=()=>{const d=root.classList.toggle('dark');localStorage.setItem('mode',d?'dark':'light');};
+  </script>
 </body>
 </html>
